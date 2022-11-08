@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct CoctailsListView: View {
+    // MARK: - Properties
+    
+    @StateObject var viewModel: CoctailsViewModeling
+    
+    init(viewModel: CoctailsViewModeling = CoctailsListViewModel()) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
     var body: some View {
-        CoctailCard()
+        NavigationView {
+            CoctailCard()
+        }.task {
+            await viewModel.getCoctails()
+        }
     }
 }
 
