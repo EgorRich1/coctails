@@ -15,11 +15,12 @@
 		CDA5D274290ABA670016A9D6 /* Cocktails.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D272290ABA670016A9D6 /* Cocktails.xcdatamodeld */; };
 		CDA5D27B290AC2CF0016A9D6 /* CoctailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D27A290AC2CF0016A9D6 /* CoctailsListView.swift */; };
 		CDA5D27E290AC3450016A9D6 /* CoctailsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D27D290AC3450016A9D6 /* CoctailsListViewModel.swift */; };
-		CDA5D285290FF9E20016A9D6 /* CoctailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D284290FF9E20016A9D6 /* CoctailCard.swift */; };
+		CDA5D285290FF9E20016A9D6 /* CoctailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D284290FF9E20016A9D6 /* CoctailCardView.swift */; };
 		CDA5D2882911212E0016A9D6 /* Color + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D2872911212E0016A9D6 /* Color + Hex.swift */; };
 		CDA5D28D291A81C20016A9D6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D28C291A81C20016A9D6 /* NetworkService.swift */; };
 		CDA5D290291A869E0016A9D6 /* ShortDrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D28F291A869E0016A9D6 /* ShortDrinkModel.swift */; };
 		CDA5D292291A87940016A9D6 /* CoctailsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D291291A87940016A9D6 /* CoctailsList.swift */; };
+		CDA5D296291D51E40016A9D6 /* CoctailCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D295291D51E40016A9D6 /* CoctailCardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,11 +35,12 @@
 		CDA5D273290ABA670016A9D6 /* Cocktails.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cocktails.xcdatamodel; sourceTree = "<group>"; };
 		CDA5D27A290AC2CF0016A9D6 /* CoctailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailsListView.swift; sourceTree = "<group>"; };
 		CDA5D27D290AC3450016A9D6 /* CoctailsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailsListViewModel.swift; sourceTree = "<group>"; };
-		CDA5D284290FF9E20016A9D6 /* CoctailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailCard.swift; sourceTree = "<group>"; };
+		CDA5D284290FF9E20016A9D6 /* CoctailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailCardView.swift; sourceTree = "<group>"; };
 		CDA5D2872911212E0016A9D6 /* Color + Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Hex.swift"; sourceTree = "<group>"; };
 		CDA5D28C291A81C20016A9D6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CDA5D28F291A869E0016A9D6 /* ShortDrinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortDrinkModel.swift; sourceTree = "<group>"; };
 		CDA5D291291A87940016A9D6 /* CoctailsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailsList.swift; sourceTree = "<group>"; };
+		CDA5D295291D51E40016A9D6 /* CoctailCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailCardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,12 +105,11 @@
 		CDA5D27C290AC3000016A9D6 /* CoctailsListFlow */ = {
 			isa = PBXGroup;
 			children = (
+				CDA5D293291D518E0016A9D6 /* CoctailsListFlow */,
 				CDA5D28B291A81A40016A9D6 /* Services */,
 				CDA5D28E291A866F0016A9D6 /* Models */,
 				CDA5D2862911211E0016A9D6 /* Extensions */,
 				CDA5D283290FF98C0016A9D6 /* Views */,
-				CDA5D27A290AC2CF0016A9D6 /* CoctailsListView.swift */,
-				CDA5D27D290AC3450016A9D6 /* CoctailsListViewModel.swift */,
 			);
 			path = CoctailsListFlow;
 			sourceTree = "<group>";
@@ -116,7 +117,6 @@
 		CDA5D283290FF98C0016A9D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CDA5D284290FF9E20016A9D6 /* CoctailCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -144,6 +144,25 @@
 				CDA5D291291A87940016A9D6 /* CoctailsList.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CDA5D293291D518E0016A9D6 /* CoctailsListFlow */ = {
+			isa = PBXGroup;
+			children = (
+				CDA5D294291D51A50016A9D6 /* CoctailCard */,
+				CDA5D27A290AC2CF0016A9D6 /* CoctailsListView.swift */,
+				CDA5D27D290AC3450016A9D6 /* CoctailsListViewModel.swift */,
+			);
+			path = CoctailsListFlow;
+			sourceTree = "<group>";
+		};
+		CDA5D294291D51A50016A9D6 /* CoctailCard */ = {
+			isa = PBXGroup;
+			children = (
+				CDA5D284290FF9E20016A9D6 /* CoctailCardView.swift */,
+				CDA5D295291D51E40016A9D6 /* CoctailCardViewModel.swift */,
+			);
+			path = CoctailCard;
 			sourceTree = "<group>";
 		};
 		FE1CC67DA937881C77C87628 /* Pods */ = {
@@ -275,7 +294,8 @@
 				CDA5D28D291A81C20016A9D6 /* NetworkService.swift in Sources */,
 				CDA5D2882911212E0016A9D6 /* Color + Hex.swift in Sources */,
 				CDA5D27B290AC2CF0016A9D6 /* CoctailsListView.swift in Sources */,
-				CDA5D285290FF9E20016A9D6 /* CoctailCard.swift in Sources */,
+				CDA5D296291D51E40016A9D6 /* CoctailCardViewModel.swift in Sources */,
+				CDA5D285290FF9E20016A9D6 /* CoctailCardView.swift in Sources */,
 				CDA5D274290ABA670016A9D6 /* Cocktails.xcdatamodeld in Sources */,
 				CDA5D290291A869E0016A9D6 /* ShortDrinkModel.swift in Sources */,
 				CDA5D27E290AC3450016A9D6 /* CoctailsListViewModel.swift in Sources */,

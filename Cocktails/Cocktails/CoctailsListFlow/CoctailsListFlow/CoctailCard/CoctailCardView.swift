@@ -1,5 +1,5 @@
 //
-//  CoctailCard.swift
+//  CoctailCardView.swift
 //  Cocktails
 //
 //  Created by Егор Ярошук on 31.10.22.
@@ -7,9 +7,12 @@
 
 import SwiftUI
 
-struct CoctailCard: View {
+struct CoctailCardView: View {
     
     // MARK: - Properties
+    
+    @StateObject var viewModel: CoctailCardViewModeling
+    @State var likeImage = "unlike"
     
     private let title: String
     private let imageUrl: String
@@ -19,6 +22,8 @@ struct CoctailCard: View {
         self.title = title
         self.imageUrl = imageUrl
         self.drinkId = drinkId
+        let viewModel = CoctailCardViewModel(drinkName: title, drinkId: drinkId)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
@@ -34,7 +39,10 @@ struct CoctailCard: View {
                 Text(title)
                     .font(.headline)
                 Spacer()
-                Image("unlike")
+                Image(self.likeImage).onTapGesture {
+                    self.likeImage = self.likeImage == "unlike" ? "like" : "unlike"
+                    viewModel.updateLikeState(isLiked: self.likeImage == "unlike")
+                }
             }
             .padding(.horizontal, (UIScreen.main.bounds.width - 300) / 2)
             .padding(.vertical, 16)
@@ -42,8 +50,8 @@ struct CoctailCard: View {
     }
 }
 
-struct CoctailCard_Previews: PreviewProvider {
+struct CoctailCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CoctailCard(title: "Long island", imageUrl: "", drinkId: "")
+        CoctailCardView(title: "Long island", imageUrl: "", drinkId: "")
     }
 }

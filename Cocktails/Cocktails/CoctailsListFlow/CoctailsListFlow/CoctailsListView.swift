@@ -23,7 +23,7 @@ struct CoctailsListView: View {
             ScrollView {
                 LazyVGrid(columns: gridItemVLayout) {
                     ForEach(viewModel.coctailsList?.drinks ?? []) { drink in
-                        CoctailCard(title: drink.drink, imageUrl: drink.imageUrl, drinkId: drink.drinkId)
+                        CoctailCardView(title: drink.drink, imageUrl: drink.imageUrl, drinkId: drink.drinkId)
                     }
                 }
             }
