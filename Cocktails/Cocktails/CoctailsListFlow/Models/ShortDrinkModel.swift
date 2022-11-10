@@ -7,7 +7,8 @@
 
 import Foundation
 
-final class ShortDrinkModel: Decodable {
+final class ShortDrinkModel: Decodable, Identifiable {
+    let id = UUID()
     let drink: String
     let imageUrl: String
     let drinkId: String

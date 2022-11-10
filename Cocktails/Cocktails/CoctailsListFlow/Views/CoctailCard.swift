@@ -8,15 +8,30 @@
 import SwiftUI
 
 struct CoctailCard: View {
+    
+    // MARK: - Properties
+    
+    private let title: String
+    private let imageUrl: String
+    private let drinkId: String
+    
+    init(title: String, imageUrl: String, drinkId: String) {
+        self.title = title
+        self.imageUrl = imageUrl
+        self.drinkId = drinkId
+    }
+    
     var body: some View {
         VStack {
-            Image("image_placeholder")
-                .resizable()
+            AsyncImage(url: URL(string: imageUrl),
+                       content: { $0.resizable() },
+                       placeholder: { Image("image_placeholder") }
+            )
                 .frame(width: 300, height: 180)
                 .padding(.horizontal, 24)
                 .padding(.top, 16)
             HStack(alignment: .top) {
-                Text("Name of the cocktail")
+                Text(title)
                     .font(.headline)
                 Spacer()
                 Image("unlike")
@@ -29,6 +44,6 @@ struct CoctailCard: View {
 
 struct CoctailCard_Previews: PreviewProvider {
     static var previews: some View {
-        CoctailCard()
+        CoctailCard(title: "Long island", imageUrl: "", drinkId: "")
     }
 }

@@ -12,13 +12,21 @@ struct CoctailsListView: View {
     
     @StateObject var viewModel: CoctailsViewModeling
     
+    private let gridItemVLayout = Array(repeating: GridItem(.flexible(), spacing: 15, alignment: .center), count: 1)
+    
     init(viewModel: CoctailsViewModeling = CoctailsListViewModel()) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
         NavigationView {
-            CoctailCard()
+            ScrollView {
+                LazyVGrid(columns: gridItemVLayout) {
+                    ForEach(viewModel.coctailsList?.drinks ?? []) { drink in
+                        CoctailCard(title: drink.drink, imageUrl: drink.imageUrl, drinkId: drink.drinkId)
+                    }
+                }
+            }
         }.task {
             await viewModel.getCoctails()
         }
