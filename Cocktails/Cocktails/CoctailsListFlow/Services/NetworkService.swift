@@ -13,15 +13,15 @@ struct NetworkConstants {
 }
 
 protocol NetworkServiceProtocol {
-    func getAlcoholicCoctails() async throws -> CoctailsList
+    func getCocktails(isAlcohol: Bool) async throws -> CoctailsList
 }
 
 final class NetworkService: NetworkServiceProtocol {
     
     static let shared = NetworkService()
     
-    func getAlcoholicCoctails() async throws -> CoctailsList {
-        let params: Parameters = ["a": "Alcoholic"]
+    func getCocktails(isAlcohol: Bool) async throws -> CoctailsList {
+        let params: Parameters = ["a": isAlcohol ? "Alcoholic" : "Non_Alcoholic"]
         let dataTask = AF.request(NetworkConstants.baseUrl + "filter.php", method: .get, parameters: params).validate(statusCode: 200..<300).serializingDecodable(CoctailsList.self)
         let value = try await dataTask.value
         return value

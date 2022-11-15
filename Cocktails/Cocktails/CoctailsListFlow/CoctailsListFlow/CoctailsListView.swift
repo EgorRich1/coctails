@@ -10,6 +10,7 @@ import SwiftUI
 struct CoctailsListView: View {
     // MARK: - Properties
     
+    @State var isAlcoholic = true 
     @StateObject var viewModel: CoctailsViewModeling
     
     private let gridItemVLayout = Array(repeating: GridItem(.flexible(), spacing: 15, alignment: .center), count: 1)
@@ -22,13 +23,9 @@ struct CoctailsListView: View {
         NavigationView {
             VStack {
                 ScrollView {
-                    HStack {
-                        SectionView(title: "Alcohol")
-                        Spacer()
-                        SectionView(title: "Non Alcohol")
-                    }.padding(.horizontal, 16)
+                    SectionView(isAlcoholic: $isAlcoholic).padding(.horizontal, 16)
                     LazyVGrid(columns: gridItemVLayout) {
-                        ForEach(viewModel.coctailsList?.drinks ?? []) { drink in
+                        ForEach(isAlcoholic ? viewModel.alcoholCocktailsList?.drinks ?? [] : viewModel.nonAlcoholCocktailsList?.drinks ?? []) { drink in
                             CoctailCardView(title: drink.drink, imageUrl: drink.imageUrl, drinkId: drink.drinkId)
                         }
                     }
@@ -36,7 +33,8 @@ struct CoctailsListView: View {
             }
             .navigationTitle("Cocktails")
         }.task {
-            await viewModel.getCoctails()
+            await viewModel.getCoctails(isAlcoholic: true)
+            await viewModel.getCoctails(isAlcoholic: false)
         }
     }
 }

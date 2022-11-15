@@ -9,23 +9,30 @@ import SwiftUI
 
 struct SectionView: View {
     
-    @State var isActive: Bool = false
-    
-    let title: String
-    
-    init(title: String) {
-        self.title = title
-    }
-    
+    @Binding var isAlcoholic: Bool
+        
     var body: some View {
         VStack {
-            Text(title).font(.title2)
-            Rectangle()
-                .frame(height: isActive ? 2 : 1, alignment: .center)
-                .animation(.default.speed(3), value: 1)
-                .background(Color.black)
-            Button("Button") {
-                isActive.toggle()
+            HStack {
+                VStack {
+                    Text("Alcohol").font(.title2)
+                    Rectangle()
+                        .frame(height: isAlcoholic ? 2 : 1, alignment: .center)
+                        .animation(.default.speed(3), value: 1)
+                        .background(Color.black)
+                }.onTapGesture {
+                    isAlcoholic = true
+                }
+                Spacer()
+                VStack {
+                    Text("Non Alcohol").font(.title2)
+                    Rectangle()
+                        .frame(height: isAlcoholic ? 1 : 2, alignment: .center)
+                        .animation(.default.speed(3), value: 1)
+                        .background(Color.black)
+                }.onTapGesture {
+                    isAlcoholic = false
+                }
             }
         }
     }
@@ -33,6 +40,6 @@ struct SectionView: View {
 
 struct SectionView_Previews: PreviewProvider {
     static var previews: some View {
-        SectionView(title: "title")
+        SectionView(isAlcoholic: .constant(false))
     }
 }

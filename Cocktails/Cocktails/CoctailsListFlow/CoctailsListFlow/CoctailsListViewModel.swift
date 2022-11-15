@@ -9,9 +9,10 @@ import SwiftUI
 
 class CoctailsViewModeling: ObservableObject {
     
-    @Published var coctailsList: CoctailsList?
+    @Published var alcoholCocktailsList: CoctailsList?
+    @Published var nonAlcoholCocktailsList: CoctailsList?
     
-    func getCoctails() async {}
+    func getCoctails(isAlcoholic: Bool) async {}
 }
 
 final class CoctailsListViewModel: CoctailsViewModeling {
@@ -25,17 +26,27 @@ final class CoctailsListViewModel: CoctailsViewModeling {
         self.networkServise = networkServise
     }
     
-    override func getCoctails() async {
+    override func getCoctails(isAlcoholic: Bool) async {
         do {
-            let coctails = try await networkServise.getAlcoholicCoctails()
-            await updateCoctails(coctails: coctails)
+            if isAlcoholic {
+                let coctails = try await networkServise.getCocktails(isAlcohol: isAlcoholic)
+                await updateAlcoholCoctails(coctails: coctails)
+            } else {
+                let coctails = try await networkServise.getCocktails(isAlcohol: isAlcoholic)
+                await updateNonAlcoholCocktails(coctails: coctails)
+            }
         } catch {
             print(error.localizedDescription)
         }
     }
     
     @MainActor
-    private func updateCoctails(coctails: CoctailsList) {
-        self.coctailsList = coctails
+    private func updateAlcoholCoctails(coctails: CoctailsList) {
+        self.alcoholCocktailsList = coctails
+    }
+    
+    @MainActor
+    private func updateNonAlcoholCocktails(coctails: CoctailsList) {
+        self.nonAlcoholCocktailsList = coctails
     }
 }
