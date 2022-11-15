@@ -30,7 +30,7 @@ struct CoctailCardView: View {
         VStack {
             AsyncImage(url: URL(string: imageUrl),
                        content: { $0.resizable() },
-                       placeholder: { Image("image_placeholder") }
+                       placeholder: { Image("image_placeholder").frame(width: 300, height: 180) }
             )
                 .frame(width: 300, height: 180)
                 .padding(.horizontal, 24)

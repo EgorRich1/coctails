@@ -20,13 +20,21 @@ struct CoctailsListView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVGrid(columns: gridItemVLayout) {
-                    ForEach(viewModel.coctailsList?.drinks ?? []) { drink in
-                        CoctailCardView(title: drink.drink, imageUrl: drink.imageUrl, drinkId: drink.drinkId)
+            VStack {
+                ScrollView {
+                    HStack {
+                        SectionView(title: "Alcohol")
+                        Spacer()
+                        SectionView(title: "Non Alcohol")
+                    }.padding(.horizontal, 16)
+                    LazyVGrid(columns: gridItemVLayout) {
+                        ForEach(viewModel.coctailsList?.drinks ?? []) { drink in
+                            CoctailCardView(title: drink.drink, imageUrl: drink.imageUrl, drinkId: drink.drinkId)
+                        }
                     }
                 }
             }
+            .navigationTitle("Cocktails")
         }.task {
             await viewModel.getCoctails()
         }
