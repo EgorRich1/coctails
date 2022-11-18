@@ -1,5 +1,5 @@
 //
-//  CoctailsListViewModel.swift
+//  CocktailsListViewModel.swift
 //  Cocktails
 //
 //  Created by Егор Ярошук on 27.10.22.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-class CoctailsViewModeling: ObservableObject {
+class CocktailsViewModeling: ObservableObject {
     
-    @Published var alcoholCocktailsList: CoctailsList?
-    @Published var nonAlcoholCocktailsList: CoctailsList?
+    @Published var alcoholCocktailsList: CocktailsList?
+    @Published var nonAlcoholCocktailsList: CocktailsList?
     
     func getCoctails(isAlcoholic: Bool) async {}
 }
 
-final class CoctailsListViewModel: CoctailsViewModeling {
+final class CocktailsListViewModel: CocktailsViewModeling {
     // MARK: - Private properties
     
     private let networkServise: NetworkServiceProtocol
@@ -30,10 +30,10 @@ final class CoctailsListViewModel: CoctailsViewModeling {
         do {
             if isAlcoholic {
                 let coctails = try await networkServise.getCocktails(isAlcohol: isAlcoholic)
-                await updateAlcoholCoctails(coctails: coctails)
+                await updateAlcoholCoctails(cocktails: coctails)
             } else {
                 let coctails = try await networkServise.getCocktails(isAlcohol: isAlcoholic)
-                await updateNonAlcoholCocktails(coctails: coctails)
+                await updateNonAlcoholCocktails(cocktails: coctails)
             }
         } catch {
             print(error.localizedDescription)
@@ -41,12 +41,12 @@ final class CoctailsListViewModel: CoctailsViewModeling {
     }
     
     @MainActor
-    private func updateAlcoholCoctails(coctails: CoctailsList) {
-        self.alcoholCocktailsList = coctails
+    private func updateAlcoholCoctails(cocktails: CocktailsList) {
+        self.alcoholCocktailsList = cocktails
     }
     
     @MainActor
-    private func updateNonAlcoholCocktails(coctails: CoctailsList) {
-        self.nonAlcoholCocktailsList = coctails
+    private func updateNonAlcoholCocktails(cocktails: CocktailsList) {
+        self.nonAlcoholCocktailsList = cocktails
     }
 }

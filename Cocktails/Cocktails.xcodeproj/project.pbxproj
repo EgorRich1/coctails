@@ -13,15 +13,16 @@
 		CDA5D26F290ABA670016A9D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDA5D26E290ABA670016A9D6 /* Preview Assets.xcassets */; };
 		CDA5D271290ABA670016A9D6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D270290ABA670016A9D6 /* Persistence.swift */; };
 		CDA5D274290ABA670016A9D6 /* Cocktails.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D272290ABA670016A9D6 /* Cocktails.xcdatamodeld */; };
-		CDA5D27B290AC2CF0016A9D6 /* CoctailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D27A290AC2CF0016A9D6 /* CoctailsListView.swift */; };
-		CDA5D27E290AC3450016A9D6 /* CoctailsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D27D290AC3450016A9D6 /* CoctailsListViewModel.swift */; };
+		CDA5D27B290AC2CF0016A9D6 /* CocktailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D27A290AC2CF0016A9D6 /* CocktailsListView.swift */; };
+		CDA5D27E290AC3450016A9D6 /* CocktailsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D27D290AC3450016A9D6 /* CocktailsListViewModel.swift */; };
 		CDA5D285290FF9E20016A9D6 /* CoctailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D284290FF9E20016A9D6 /* CoctailCardView.swift */; };
 		CDA5D2882911212E0016A9D6 /* Color + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D2872911212E0016A9D6 /* Color + Hex.swift */; };
 		CDA5D28D291A81C20016A9D6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D28C291A81C20016A9D6 /* NetworkService.swift */; };
 		CDA5D290291A869E0016A9D6 /* ShortDrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D28F291A869E0016A9D6 /* ShortDrinkModel.swift */; };
-		CDA5D292291A87940016A9D6 /* CoctailsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D291291A87940016A9D6 /* CoctailsList.swift */; };
+		CDA5D292291A87940016A9D6 /* CocktailsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D291291A87940016A9D6 /* CocktailsList.swift */; };
 		CDA5D296291D51E40016A9D6 /* CoctailCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D295291D51E40016A9D6 /* CoctailCardViewModel.swift */; };
 		CDA5D298292260360016A9D6 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D297292260360016A9D6 /* SectionView.swift */; };
+		CDA5D29B292791990016A9D6 /* CocktailsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D29A292791990016A9D6 /* CocktailsDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,15 +35,16 @@
 		CDA5D26E290ABA670016A9D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CDA5D270290ABA670016A9D6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CDA5D273290ABA670016A9D6 /* Cocktails.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cocktails.xcdatamodel; sourceTree = "<group>"; };
-		CDA5D27A290AC2CF0016A9D6 /* CoctailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailsListView.swift; sourceTree = "<group>"; };
-		CDA5D27D290AC3450016A9D6 /* CoctailsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailsListViewModel.swift; sourceTree = "<group>"; };
+		CDA5D27A290AC2CF0016A9D6 /* CocktailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsListView.swift; sourceTree = "<group>"; };
+		CDA5D27D290AC3450016A9D6 /* CocktailsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsListViewModel.swift; sourceTree = "<group>"; };
 		CDA5D284290FF9E20016A9D6 /* CoctailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailCardView.swift; sourceTree = "<group>"; };
 		CDA5D2872911212E0016A9D6 /* Color + Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Hex.swift"; sourceTree = "<group>"; };
 		CDA5D28C291A81C20016A9D6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CDA5D28F291A869E0016A9D6 /* ShortDrinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortDrinkModel.swift; sourceTree = "<group>"; };
-		CDA5D291291A87940016A9D6 /* CoctailsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailsList.swift; sourceTree = "<group>"; };
+		CDA5D291291A87940016A9D6 /* CocktailsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsList.swift; sourceTree = "<group>"; };
 		CDA5D295291D51E40016A9D6 /* CoctailCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailCardViewModel.swift; sourceTree = "<group>"; };
 		CDA5D297292260360016A9D6 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		CDA5D29A292791990016A9D6 /* CocktailsDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +109,7 @@
 		CDA5D27C290AC3000016A9D6 /* CoctailsListFlow */ = {
 			isa = PBXGroup;
 			children = (
-				CDA5D293291D518E0016A9D6 /* CoctailsListFlow */,
+				CDA5D293291D518E0016A9D6 /* CocktailsListFlow */,
 				CDA5D28B291A81A40016A9D6 /* Services */,
 				CDA5D28E291A866F0016A9D6 /* Models */,
 				CDA5D2862911211E0016A9D6 /* Extensions */,
@@ -144,28 +146,37 @@
 			isa = PBXGroup;
 			children = (
 				CDA5D28F291A869E0016A9D6 /* ShortDrinkModel.swift */,
-				CDA5D291291A87940016A9D6 /* CoctailsList.swift */,
+				CDA5D291291A87940016A9D6 /* CocktailsList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		CDA5D293291D518E0016A9D6 /* CoctailsListFlow */ = {
+		CDA5D293291D518E0016A9D6 /* CocktailsListFlow */ = {
 			isa = PBXGroup;
 			children = (
-				CDA5D294291D51A50016A9D6 /* CoctailCard */,
-				CDA5D27A290AC2CF0016A9D6 /* CoctailsListView.swift */,
-				CDA5D27D290AC3450016A9D6 /* CoctailsListViewModel.swift */,
+				CDA5D299292791750016A9D6 /* CocktailDetails */,
+				CDA5D294291D51A50016A9D6 /* CocktailCard */,
+				CDA5D27A290AC2CF0016A9D6 /* CocktailsListView.swift */,
+				CDA5D27D290AC3450016A9D6 /* CocktailsListViewModel.swift */,
 			);
-			path = CoctailsListFlow;
+			path = CocktailsListFlow;
 			sourceTree = "<group>";
 		};
-		CDA5D294291D51A50016A9D6 /* CoctailCard */ = {
+		CDA5D294291D51A50016A9D6 /* CocktailCard */ = {
 			isa = PBXGroup;
 			children = (
 				CDA5D284290FF9E20016A9D6 /* CoctailCardView.swift */,
 				CDA5D295291D51E40016A9D6 /* CoctailCardViewModel.swift */,
 			);
-			path = CoctailCard;
+			path = CocktailCard;
+			sourceTree = "<group>";
+		};
+		CDA5D299292791750016A9D6 /* CocktailDetails */ = {
+			isa = PBXGroup;
+			children = (
+				CDA5D29A292791990016A9D6 /* CocktailsDetails.swift */,
+			);
+			path = CocktailDetails;
 			sourceTree = "<group>";
 		};
 		FE1CC67DA937881C77C87628 /* Pods */ = {
@@ -292,17 +303,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDA5D271290ABA670016A9D6 /* Persistence.swift in Sources */,
-				CDA5D292291A87940016A9D6 /* CoctailsList.swift in Sources */,
+				CDA5D292291A87940016A9D6 /* CocktailsList.swift in Sources */,
 				CDA5D268290ABA660016A9D6 /* CocktailsApp.swift in Sources */,
 				CDA5D28D291A81C20016A9D6 /* NetworkService.swift in Sources */,
 				CDA5D2882911212E0016A9D6 /* Color + Hex.swift in Sources */,
-				CDA5D27B290AC2CF0016A9D6 /* CoctailsListView.swift in Sources */,
+				CDA5D27B290AC2CF0016A9D6 /* CocktailsListView.swift in Sources */,
 				CDA5D296291D51E40016A9D6 /* CoctailCardViewModel.swift in Sources */,
 				CDA5D285290FF9E20016A9D6 /* CoctailCardView.swift in Sources */,
 				CDA5D298292260360016A9D6 /* SectionView.swift in Sources */,
 				CDA5D274290ABA670016A9D6 /* Cocktails.xcdatamodeld in Sources */,
 				CDA5D290291A869E0016A9D6 /* ShortDrinkModel.swift in Sources */,
-				CDA5D27E290AC3450016A9D6 /* CoctailsListViewModel.swift in Sources */,
+				CDA5D29B292791990016A9D6 /* CocktailsDetails.swift in Sources */,
+				CDA5D27E290AC3450016A9D6 /* CocktailsListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

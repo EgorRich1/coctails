@@ -14,7 +14,7 @@ struct CocktailsApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                CoctailsListView()
+                CocktailsListView()
                     .tabItem {
                         Label("Cocktails", image: "list_tab")
                     }

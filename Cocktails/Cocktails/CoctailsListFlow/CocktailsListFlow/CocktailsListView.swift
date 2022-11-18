@@ -1,5 +1,5 @@
 //
-//  CoctailsListView.swift
+//  CocktailsListView.swift
 //  Cocktails
 //
 //  Created by Егор Ярошук on 27.10.22.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct CoctailsListView: View {
+struct CocktailsListView: View {
     // MARK: - Properties
     
     @State var isAlcoholic = true 
-    @StateObject var viewModel: CoctailsViewModeling
+    @StateObject var viewModel: CocktailsViewModeling
     
     private let gridItemVLayout = Array(repeating: GridItem(.flexible(), spacing: 15, alignment: .center), count: 1)
     
-    init(viewModel: CoctailsViewModeling = CoctailsListViewModel()) {
+    init(viewModel: CocktailsViewModeling = CocktailsListViewModel()) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -39,8 +39,8 @@ struct CoctailsListView: View {
     }
 }
 
-struct CoctailsListView_Previews: PreviewProvider {
+struct CocktailsListView_Previews: PreviewProvider {
     static var previews: some View {
-        CoctailsListView()
+        CocktailsListView()
     }
 }

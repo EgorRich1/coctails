@@ -7,6 +7,6 @@
 
 import Foundation
 
-final class CoctailsList: Decodable {
+final class CocktailsList: Decodable {
     let drinks: [ShortDrinkModel]
 }
