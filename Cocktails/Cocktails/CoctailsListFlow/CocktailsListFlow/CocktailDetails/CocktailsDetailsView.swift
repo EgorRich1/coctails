@@ -13,6 +13,14 @@ struct CocktailsDetailsView: View {
     
     @State var likeImage = "unlike"
     
+    @StateObject var viewModel: CocktailsDetailsViewModeling
+    
+    private let gridItemVLayout = Array(repeating: GridItem(.flexible(), spacing: 15, alignment: .center), count: 1)
+    
+    init(drinkId: String) {
+        _viewModel = StateObject(wrappedValue: CocktailsDetailsViewModel(drinkId: drinkId))
+    }
+    
     var body: some View {
         VStack {
             AsyncImage(url: URL(string: "imageUrl"),
@@ -28,17 +36,21 @@ struct CocktailsDetailsView: View {
                 Spacer()
                 Image(self.likeImage).onTapGesture {
                     self.likeImage = self.likeImage == "unlike" ? "like" : "unlike"
-//                    viewModel.updateLikeState(isLiked: self.likeImage == "unlike")
+                    viewModel.updateLikeState(isLiked: self.likeImage == "unlike")
                 }
             }
             .padding(.horizontal, (UIScreen.main.bounds.width - 300) / 2)
             .padding(.vertical, 16)
-        }.background(Color(hex: "D9D9D9"))
+        }
+        .background(Color(hex: "D9D9D9"))
+        .task {
+            await viewModel.getCoctailsDetail()
+        }
     }
 }
 
 struct CocktailsDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        CocktailsDetailsView()
+        CocktailsDetailsView(drinkId: "")
     }
 }

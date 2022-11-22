@@ -26,7 +26,9 @@ struct CocktailsListView: View {
                     SectionView(isAlcoholic: $isAlcoholic).padding(.horizontal, 16)
                     LazyVGrid(columns: gridItemVLayout) {
                         ForEach(isAlcoholic ? viewModel.alcoholCocktailsList?.drinks ?? [] : viewModel.nonAlcoholCocktailsList?.drinks ?? []) { drink in
-                            NavigationLink(destination: CocktailsDetailsView().navigationBarTitle("Cocktails details")) {
+                            NavigationLink(
+                                destination: CocktailsDetailsView(drinkId: drink.drinkId).navigationBarTitle("Cocktails details")
+                            ) {
                                 CoctailCardView(title: drink.drink, imageUrl: drink.imageUrl, drinkId: drink.drinkId)
                             }.buttonStyle(PlainButtonStyle())
                         }
