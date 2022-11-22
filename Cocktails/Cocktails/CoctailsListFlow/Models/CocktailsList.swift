@@ -1,5 +1,5 @@
 //
-//  CoctailsList.swift
+//  CocktailsList.swift
 //  Cocktails
 //
 //  Created by Егор Ярошук on 8.11.22.
