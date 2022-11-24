@@ -23,7 +23,7 @@ struct CocktailsDetailsView: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: "imageUrl"),
+            AsyncImage(url: URL(string: viewModel.drink?.drinkImageUrl ?? ""),
                        content: { $0.resizable() },
                        placeholder: { Text("Loading...") }
             )
@@ -31,7 +31,7 @@ struct CocktailsDetailsView: View {
                 .padding(.horizontal, 24)
                 .padding(.top, 16)
             HStack(alignment: .top) {
-                Text("title")
+                Text(viewModel.drink?.drinkName ?? "")
                     .font(.headline)
                 Spacer()
                 Image(self.likeImage).onTapGesture {

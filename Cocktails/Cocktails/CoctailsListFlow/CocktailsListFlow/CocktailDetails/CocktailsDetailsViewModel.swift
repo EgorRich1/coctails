@@ -8,6 +8,7 @@
 import SwiftUI
 
 class CocktailsDetailsViewModeling: ObservableObject {
+    @Published var drink: Drink?
     func updateLikeState(isLiked: Bool) {}
     func getCoctailsDetail() async {}
 }
@@ -33,6 +34,16 @@ final class CocktailsDetailsViewModel: CocktailsDetailsViewModeling {
     }
     
     override func getCoctailsDetail() async {
-        
+        do {
+            let details = try await networkServise.getCoctailDetails(for: drinkId)
+            await updateDrink(drink: details.drinks[0])
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    @MainActor
+    private func updateDrink(drink: Drink) {
+        self.drink = drink
     }
 }
