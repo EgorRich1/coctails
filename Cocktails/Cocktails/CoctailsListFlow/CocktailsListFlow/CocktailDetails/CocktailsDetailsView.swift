@@ -22,29 +22,61 @@ struct CocktailsDetailsView: View {
     }
     
     var body: some View {
-        VStack {
-            AsyncImage(url: URL(string: viewModel.drink?.drinkImageUrl ?? ""),
-                       content: { $0.resizable() },
-                       placeholder: { Text("Loading...") }
-            )
-                .frame(width: 300, height: 180)
-                .padding(.horizontal, 24)
-                .padding(.top, 16)
-            HStack(alignment: .top) {
-                Text(viewModel.drink?.drinkName ?? "")
-                    .font(.headline)
-                Spacer()
-                Image(self.likeImage).onTapGesture {
-                    self.likeImage = self.likeImage == "unlike" ? "like" : "unlike"
-                    viewModel.updateLikeState(isLiked: self.likeImage == "unlike")
+        ScrollView {
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    AsyncImage(url: URL(string: viewModel.drink?.drinkImageUrl ?? ""),
+                               content: { $0.resizable() },
+                               placeholder: { Text("Loading...") }
+                    )
+                    .frame(width: 300, height: 180)
+                    .padding(.horizontal, 24)
+                    .padding(.top, 16)
+                    Spacer()
+                }
+                HStack(alignment: .top) {
+                    Text(viewModel.drink?.drinkName ?? "")
+                        .font(.headline)
+                    Spacer()
+                    Image(self.likeImage).onTapGesture {
+                        self.likeImage = self.likeImage == "unlike" ? "like" : "unlike"
+                        viewModel.updateLikeState(isLiked: self.likeImage == "unlike")
+                    }
+                }
+                .padding(.horizontal, (UIScreen.main.bounds.width - 300) / 2)
+                .padding(.vertical, 16)
+                Group {
+                    HStack(alignment: .top) {
+                        Text("Ingridients: ").font(.bold(.title3)())
+                        Text(viewModel.drink?.ingredients.joined(separator: ", ") ?? "")
+                    }.padding(.leading, (UIScreen.main.bounds.width - 300) / 2)
+                    Spacer()
+                    HStack() {
+                        Text("Alcoholic: ").font(.bold(.title3)())
+                        Text(viewModel.drink?.alcoholic ?? "")
+                    }.padding(.leading, (UIScreen.main.bounds.width - 300) / 2)
+                    Spacer()
+                    HStack {
+                        Text("Glass: ").font(.bold(.title3)())
+                        Text(viewModel.drink?.glass ?? "")
+                    }.padding(.leading, (UIScreen.main.bounds.width - 300) / 2)
+                    Spacer()
+                    HStack(alignment: .top) {
+                        Text("Instructions: ").font(.bold(.title3)())
+                        Text(viewModel.drink?.instructions ?? "")
+                    }.padding(.leading, (UIScreen.main.bounds.width - 300) / 2)
+                    Spacer()
+                    HStack(alignment: .top) {
+                        Text("Measures: ").font(.bold(.title3)())
+                        Text(viewModel.drink?.measures.joined(separator: ", ") ?? "")
+                    }.padding(.leading, (UIScreen.main.bounds.width - 300) / 2)
                 }
             }
-            .padding(.horizontal, (UIScreen.main.bounds.width - 300) / 2)
-            .padding(.vertical, 16)
-        }
-        .background(Color(hex: "D9D9D9"))
-        .task {
-            await viewModel.getCoctailsDetail()
+            .background(Color(hex: "D9D9D9"))
+            .task {
+                await viewModel.getCoctailsDetail()
+            }
         }
     }
 }
