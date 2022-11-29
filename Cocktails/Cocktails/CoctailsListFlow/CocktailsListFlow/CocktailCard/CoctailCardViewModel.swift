@@ -13,15 +13,31 @@ class CoctailCardViewModeling: ObservableObject {
 
 final class CoctailCardViewModel: CoctailCardViewModeling {
     
-    private let drinkName: String
-    private let drinkId: String
+    private let cocktail: ShortDrinkModel
+    private let databaseService: DatabaseService
     
-    init(drinkName: String, drinkId: String) {
-        self.drinkName = drinkName
-        self.drinkId = drinkId
+    init(
+        cocktail: ShortDrinkModel,
+        databaseService: DatabaseService = DatabaseService.shared
+    ) {
+        self.cocktail = cocktail
+        self.databaseService = databaseService
     }
     
     override func updateLikeState(isLiked: Bool) {
-        print(isLiked)
+        if isLiked {
+            databaseService.writeCocktail(shortCocktail: cocktail) {
+                print("Write success")
+            }
+        } else {
+            databaseService.removeCocktail(by: cocktail.drinkId) { result in
+                switch result {
+                case .success:
+                    print("Removed")
+                case let .failure(error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
 }

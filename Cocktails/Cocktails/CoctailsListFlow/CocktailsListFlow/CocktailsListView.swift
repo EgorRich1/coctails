@@ -29,7 +29,7 @@ struct CocktailsListView: View {
                             NavigationLink(
                                 destination: CocktailsDetailsView(drinkId: drink.drinkId).navigationBarTitle("Cocktails details")
                             ) {
-                                CoctailCardView(title: drink.drink, imageUrl: drink.imageUrl, drinkId: drink.drinkId)
+                                CoctailCardView(cocktail: drink)
                             }.buttonStyle(PlainButtonStyle())
                         }
                     }
