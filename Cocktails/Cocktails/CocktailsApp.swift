@@ -13,8 +13,21 @@ struct CocktailsApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            TabView {
+                CocktailsListView()
+                    .tabItem {
+                        Label("Cocktails", image: "list_tab")
+                    }
+//                View()
+//                    .tabItem {
+//                        Label("Favorite cocktails", image: "favorite_tab")
+//                    }
+//                View()
+//                    .tabItem {
+//                        Label("Search cocktails", image: "search_tab")
+//                    }
+            }
+            .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
