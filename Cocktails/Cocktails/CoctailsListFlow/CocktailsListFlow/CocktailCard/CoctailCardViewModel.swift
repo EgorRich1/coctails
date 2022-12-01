@@ -7,24 +7,37 @@
 
 import SwiftUI
 
-class CoctailCardViewModeling: ObservableObject {
-    func updateLikeState(isLiked: Bool) {}
-}
-
-final class CoctailCardViewModel: CoctailCardViewModeling {
+final class CoctailCardViewModel: ObservableObject {
     
     private let cocktail: ShortDrinkModel
-    private let databaseService: DatabaseService
+    @Published var isLiked: Bool = false
+    private let databaseService: DatabaseServiceProtocol
     
     init(
         cocktail: ShortDrinkModel,
-        databaseService: DatabaseService = DatabaseService.shared
+        databaseService: DatabaseServiceProtocol = DatabaseService.shared
     ) {
         self.cocktail = cocktail
         self.databaseService = databaseService
+        if cocktail.drinkId == "15395" {
+            print(123123142124)
+        }
     }
     
-    override func updateLikeState(isLiked: Bool) {
+    private func checkIfItAlreadyLike() -> Bool {
+        let likedCocktails = databaseService.getListOfFavoriteCocktails()
+        return likedCocktails.contains(where: {$0.drinkId == cocktail.drinkId})
+    }
+    
+    func setupState() {
+        let a = checkIfItAlreadyLike()
+        if a != isLiked {
+            isLiked = a
+        }
+    }
+    
+    func updateLikeState() {
+        isLiked.toggle()
         if isLiked {
             databaseService.writeCocktail(shortCocktail: cocktail) {
                 print("Write success")

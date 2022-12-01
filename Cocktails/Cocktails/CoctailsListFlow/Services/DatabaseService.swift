@@ -8,7 +8,13 @@
 import Foundation
 import RealmSwift
 
-final class DatabaseService {
+protocol DatabaseServiceProtocol {
+    func writeCocktail(shortCocktail: ShortDrinkModel, completion: (() -> Void)?)
+    func removeCocktail(by id: String, completion: ((Result<Void, Error>) -> Void)?)
+    func getListOfFavoriteCocktails() -> [ShortDrinkModel]
+}
+
+final class DatabaseService: DatabaseServiceProtocol {
     
     static let shared: DatabaseService = .init()
     
@@ -35,7 +41,7 @@ final class DatabaseService {
             }
             do {
                 try self.realm?.write({
-                    var dbCoctail = DBShortCocktail(shortDrink: shortCocktail)
+                    let dbCoctail = DBShortCocktail(shortDrink: shortCocktail)
                     self.realm?.add(dbCoctail, update: .modified)
                 })
                 completion?()
@@ -65,5 +71,21 @@ final class DatabaseService {
                 completion?(.failure(error))
             }
         }
+    }
+    
+    func getListOfFavoriteCocktails() -> [ShortDrinkModel] {
+        if let dbDrinks = realm?.objects(DBShortCocktail.self) {
+            var drinks = [ShortDrinkModel]()
+            for dbDrink in dbDrinks {
+                let drink = ShortDrinkModel(
+                    name: dbDrink.title,
+                    imageUrl: dbDrink.imageUrl,
+                    drinkId: dbDrink.drinkId
+                )
+                drinks.append(drink)
+            }
+            return drinks
+        }
+        return []
     }
 }
