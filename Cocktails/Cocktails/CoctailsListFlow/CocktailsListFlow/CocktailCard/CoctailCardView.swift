@@ -11,18 +11,19 @@ struct CoctailCardView: View {
     
     // MARK: - Properties
     
-    @StateObject var viewModel: CoctailCardViewModeling
-    @State var likeImage = "unlike"
+    @StateObject var viewModel: CoctailCardViewModel
     
     private let title: String
     private let imageUrl: String
     private let drinkId: String
+    private let cocktail: ShortDrinkModel
     
-    init(title: String, imageUrl: String, drinkId: String) {
-        self.title = title
-        self.imageUrl = imageUrl
-        self.drinkId = drinkId
-        let viewModel = CoctailCardViewModel(drinkName: title, drinkId: drinkId)
+    init(cocktail: ShortDrinkModel) {
+        self.title = cocktail.drink
+        self.imageUrl = cocktail.imageUrl
+        self.drinkId = cocktail.drinkId
+        self.cocktail = cocktail
+        let viewModel = CoctailCardViewModel(cocktail: cocktail)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -39,19 +40,22 @@ struct CoctailCardView: View {
                 Text(title)
                     .font(.headline)
                 Spacer()
-                Image(self.likeImage).onTapGesture {
-                    self.likeImage = self.likeImage == "unlike" ? "like" : "unlike"
-                    viewModel.updateLikeState(isLiked: self.likeImage == "unlike")
+                Image($viewModel.isLiked.wrappedValue ? "like" : "unlike").onTapGesture {
+                    viewModel.updateLikeState()
                 }
             }
             .padding(.horizontal, (UIScreen.main.bounds.width - 300) / 2)
             .padding(.vertical, 16)
-        }.background(Color(hex: "D9D9D9"))
+        }
+        .background(Color(hex: "D9D9D9"))
+        .onAppear {
+            viewModel.setupState()
+        }
     }
 }
 
 struct CoctailCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CoctailCardView(title: "Long island", imageUrl: "", drinkId: "")
+        CoctailCardView(cocktail: .init(name: "", imageUrl: "", drinkId: ""))
     }
 }

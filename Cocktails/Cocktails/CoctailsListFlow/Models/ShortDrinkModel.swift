@@ -19,6 +19,12 @@ final class ShortDrinkModel: Decodable, Identifiable {
         case drinkId = "idDrink"
     }
     
+    init(name: String, imageUrl: String, drinkId: String) {
+        self.drink = name
+        self.imageUrl = imageUrl
+        self.drinkId = drinkId
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
