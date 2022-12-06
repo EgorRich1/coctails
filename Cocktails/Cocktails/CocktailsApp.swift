@@ -19,10 +19,10 @@ struct CocktailsApp: App {
                     .tabItem {
                         Label("Cocktails", image: "list_tab")
                     }
-//                View()
-//                    .tabItem {
-//                        Label("Favorite cocktails", image: "favorite_tab")
-//                    }
+                FavoiriteCocktailsListView()
+                    .tabItem {
+                        Label("Favorite cocktails", image: "favorite_tab")
+                    }
 //                View()
 //                    .tabItem {
 //                        Label("Search cocktails", image: "search_tab")

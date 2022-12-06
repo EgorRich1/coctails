@@ -9,9 +9,13 @@ import SwiftUI
 
 final class CoctailCardViewModel: ObservableObject {
     
+    // MARK: - Private propetries
+    
     private let cocktail: ShortDrinkModel
     @Published var isLiked: Bool = false
     private let databaseService: DatabaseServiceProtocol
+    
+    // MARK: - Init
     
     init(
         cocktail: ShortDrinkModel,
@@ -21,10 +25,14 @@ final class CoctailCardViewModel: ObservableObject {
         self.databaseService = databaseService
     }
     
+    // MARK: - Private methods
+    
     private func checkIfItAlreadyLike() -> Bool {
         let likedCocktails = databaseService.getListOfFavoriteCocktails()
         return likedCocktails.contains(where: {$0.drinkId == cocktail.drinkId})
     }
+    
+    // MARK: - Public methods
     
     func setupState() {
         let isLiked = checkIfItAlreadyLike()

@@ -28,10 +28,19 @@ final class CocktailsDetailsViewModel: ObservableObject {
         self.databaseService = databaseService
     }
     
+    // MARK: - Private methods
+    
     private func checkIfItAlreadyLike() -> Bool {
         let likedCocktails = databaseService.getListOfFavoriteCocktails()
         return likedCocktails.contains(where: {$0.drinkId == drinkId})
     }
+    
+    @MainActor
+    private func updateDrink(drink: Drink) {
+        self.drink = drink
+    }
+    
+    // MARK: - Public methods
     
     func setupState() {
         let isLiked = checkIfItAlreadyLike()
@@ -66,10 +75,5 @@ final class CocktailsDetailsViewModel: ObservableObject {
         } catch {
             print(error.localizedDescription)
         }
-    }
-    
-    @MainActor
-    private func updateDrink(drink: Drink) {
-        self.drink = drink
     }
 }
