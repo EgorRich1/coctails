@@ -10,10 +10,8 @@ import SwiftUI
 struct CocktailsDetailsView: View {
     
     // MARK: - Properties
-    
-    @State var likeImage = "unlike"
-    
-    @StateObject var viewModel: CocktailsDetailsViewModeling
+        
+    @StateObject var viewModel: CocktailsDetailsViewModel
     
     private let gridItemVLayout = Array(repeating: GridItem(.flexible(), spacing: 15, alignment: .center), count: 1)
     
@@ -39,9 +37,8 @@ struct CocktailsDetailsView: View {
                     Text(viewModel.drink?.drinkName ?? "")
                         .font(.headline)
                     Spacer()
-                    Image(self.likeImage).onTapGesture {
-                        self.likeImage = self.likeImage == "unlike" ? "like" : "unlike"
-                        viewModel.updateLikeState(isLiked: self.likeImage == "unlike")
+                    Image($viewModel.isLiked.wrappedValue ? "like" : "unlike").onTapGesture {
+                        viewModel.updateLikeState()
                     }
                 }
                 .padding(.horizontal, (UIScreen.main.bounds.width - 300) / 2)
@@ -76,6 +73,9 @@ struct CocktailsDetailsView: View {
             .background(Color(hex: "D9D9D9"))
             .task {
                 await viewModel.getCoctailsDetail()
+            }
+            .onAppear {
+                viewModel.setupState()
             }
         }
     }

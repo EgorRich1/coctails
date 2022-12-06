@@ -19,9 +19,6 @@ final class CoctailCardViewModel: ObservableObject {
     ) {
         self.cocktail = cocktail
         self.databaseService = databaseService
-        if cocktail.drinkId == "15395" {
-            print(123123142124)
-        }
     }
     
     private func checkIfItAlreadyLike() -> Bool {
@@ -30,9 +27,9 @@ final class CoctailCardViewModel: ObservableObject {
     }
     
     func setupState() {
-        let a = checkIfItAlreadyLike()
-        if a != isLiked {
-            isLiked = a
+        let isLiked = checkIfItAlreadyLike()
+        if isLiked != self.isLiked {
+            self.isLiked = isLiked
         }
     }
     
