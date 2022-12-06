@@ -20,6 +20,9 @@ struct FavoiriteCocktailsListView: View {
     var body: some View {
         NavigationView {
             VStack {
+                if (viewModel.favoriteCocktails ?? []).isEmpty {
+                    Text("You have no favorite cocktails").padding()
+                }
                 ScrollView {
                     LazyVGrid(columns: gridItemVLayout) {
                         ForEach(viewModel.favoriteCocktails ?? []) { drink in
