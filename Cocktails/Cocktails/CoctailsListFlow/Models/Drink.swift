@@ -7,7 +7,8 @@
 
 import Foundation
 
-final class Drink: Decodable {
+final class Drink: Decodable, Identifiable {
+    let id = UUID()
     let drinkId: String
     let drinkName: String
     let drinkAlternate: String?

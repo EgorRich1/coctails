@@ -12,9 +12,7 @@ struct CocktailsListView: View {
     
     @State var isAlcoholic = true 
     @StateObject var viewModel: CocktailsViewModeling
-    
-    private let gridItemVLayout = Array(repeating: GridItem(.flexible(), spacing: 15, alignment: .center), count: 1)
-    
+        
     init(viewModel: CocktailsViewModeling = CocktailsListViewModel()) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -24,7 +22,7 @@ struct CocktailsListView: View {
             VStack {
                 ScrollView {
                     SectionView(isAlcoholic: $isAlcoholic).padding(.horizontal, 16)
-                    LazyVGrid(columns: gridItemVLayout) {
+                    LazyVStack {
                         ForEach(isAlcoholic ? viewModel.alcoholCocktailsList?.drinks ?? [] : viewModel.nonAlcoholCocktailsList?.drinks ?? []) { drink in
                             NavigationLink(
                                 destination: CocktailsDetailsView(drinkId: drink.drinkId).navigationBarTitle("Cocktails details")

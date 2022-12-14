@@ -15,6 +15,7 @@ struct NetworkConstants {
 protocol NetworkServiceProtocol {
     func getCocktails(isAlcohol: Bool) async throws -> CocktailsList
     func getCoctailDetails(for id: String) async throws -> DrinkDetails
+    func getSearchedCocktails(for name: String) async throws -> DrinkDetails
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -31,6 +32,13 @@ final class NetworkService: NetworkServiceProtocol {
     func getCoctailDetails(for id: String) async throws -> DrinkDetails {
         let params: Parameters = ["i": id]
         let dataTask = AF.request(NetworkConstants.baseUrl + "lookup.php", method: .get, parameters: params).validate(statusCode: 200..<300).serializingDecodable(DrinkDetails.self)
+        let value = try await dataTask.value
+        return value
+    }
+    
+    func getSearchedCocktails(for name: String) async throws -> DrinkDetails {
+        let params: Parameters = ["s": name]
+        let dataTask = AF.request(NetworkConstants.baseUrl + "search.php", method: .get, parameters: params).validate(statusCode: 200..<300).serializingDecodable(DrinkDetails.self)
         let value = try await dataTask.value
         return value
     }

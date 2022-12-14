@@ -23,10 +23,10 @@ struct CocktailsApp: App {
                     .tabItem {
                         Label("Favorite cocktails", image: "favorite_tab")
                     }
-//                View()
-//                    .tabItem {
-//                        Label("Search cocktails", image: "search_tab")
-//                    }
+                SearchCocktailsView()
+                    .tabItem {
+                        Label("Search cocktails", image: "search_tab")
+                    }
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

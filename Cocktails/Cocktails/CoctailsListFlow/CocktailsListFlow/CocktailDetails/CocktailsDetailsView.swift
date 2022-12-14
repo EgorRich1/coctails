@@ -12,9 +12,7 @@ struct CocktailsDetailsView: View {
     // MARK: - Properties
         
     @StateObject var viewModel: CocktailsDetailsViewModel
-    
-    private let gridItemVLayout = Array(repeating: GridItem(.flexible(), spacing: 15, alignment: .center), count: 1)
-    
+        
     init(drinkId: String) {
         _viewModel = StateObject(wrappedValue: CocktailsDetailsViewModel(drinkId: drinkId))
     }
