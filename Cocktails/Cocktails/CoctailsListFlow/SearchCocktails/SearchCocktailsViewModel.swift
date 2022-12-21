@@ -10,9 +10,15 @@ import SwiftUI
 final class SearchCocktailsViewModel: ObservableObject {
     // MARK: - Private properties
     
+    private var timer: Timer?
     private let networkServise: NetworkServiceProtocol
     private let databaseService: DatabaseServiceProtocol
     @Published var drinks = [Drink]()
+    @Published var searchText = "" {
+        willSet(newValue) {
+            checkRequest()
+        }
+    }
     
     // MARK: - Init
     
@@ -31,11 +37,26 @@ final class SearchCocktailsViewModel: ObservableObject {
         self.drinks = drinks
     }
     
-    // MARK: - Public methods
+    // MARK: - Private methods
     
-    func getCocktails(with name: String) async {
+    private func checkRequest() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(handleEndOfTimer), userInfo: nil, repeats: false)
+    }
+    
+    @objc private func handleEndOfTimer() {
+        Task {
+            await self.getCocktails()
+        }
+    }
+    
+    private func getCocktails() async {
         do {
-            let value = try await networkServise.getSearchedCocktails(for: name)
+            if searchText.isEmpty {
+                await updateDrinks(drinks: [])
+                return
+            }
+            let value = try await networkServise.getSearchedCocktails(for: searchText)
             await updateDrinks(drinks: value.drinks)
         } catch {
             print(error.localizedDescription)

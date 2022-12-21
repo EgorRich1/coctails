@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchCocktailsView: View {
     // MARK: - Properties
     
+    @State private var text: String = ""
     @StateObject var viewModel: SearchCocktailsViewModel
         
     init(viewModel: SearchCocktailsViewModel = SearchCocktailsViewModel()) {
@@ -19,6 +20,12 @@ struct SearchCocktailsView: View {
     var body: some View {
         NavigationView {
             ScrollView {
+                TextField("Type name", text: $viewModel.searchText)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .border(.black)
+                    .padding(.horizontal, 10)
+                    .font(.title)
                 LazyVStack {
                     ForEach(viewModel.drinks) { drink in
                         NavigationLink(
@@ -30,8 +37,6 @@ struct SearchCocktailsView: View {
                     }
                 }
             }.navigationTitle("Search")
-        }.task {
-            await viewModel.getCocktails(with: "Mar")
         }
     }
 }
